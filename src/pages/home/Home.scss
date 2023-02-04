@@ -1,0 +1,27 @@
+.Home {
+  background-image: url('../../assets/bg-home.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &-wrapper {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  &-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 0;
+    border-bottom: 1px solid #1A1A1A;
+  }
+
+  .mark {
+    position: absolute;
+    top: 100%;
+    left: 110%;
+    transform: translate(-50%, -35%);
+  }
+}
