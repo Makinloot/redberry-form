@@ -4,6 +4,13 @@
   align-items: flex-start !important;
   font-family: 'Helvetica-regular', sans-serif;
 
+  // for input type date
+  &:has(input[type=date]) {
+    img {
+      display: none !important;
+    }
+  }
+
   // for input type file
   &:has(.btn-file) {
     position: relative;
@@ -39,6 +46,13 @@
     }
   }
 
+  &:has(textarea:focus:invalid) {
+    color: #E52F2F;
+    textarea {
+      border: 1px solid #E52F2F;
+    }
+  }
+
   label {
     font-size: 1rem;
     font-weight: 600;
@@ -56,11 +70,13 @@
   }
 
   // valid inputs
-  input:valid {
+  input:valid,
+  textarea:valid {
     border: 1px solid #98E37E;
   }
 
-  input:valid ~ .success-icon {
+  input:valid ~ .success-icon,
+  textarea:valid ~ .success-icon {
     display: block;
   }
 
@@ -80,5 +96,4 @@
     position: absolute;
     display: none;
   }
-
 }

@@ -1,93 +1,84 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 
-import errorIcon from '../../assets/error-vector.png';
-import successIcon from '../../assets/correct-vector.png';
+import { inputFields } from "../../data";
 
 import "./About.scss";
 
 const About = () => {
+  const [fileInput, setFileInput] = useState();
+  const [values, setValues] = useState({
+    name: "",
+    lastname: "",
+    text: "",
+    email: "",
+    number: "",
+  });
+
+  const handleUploadImg = (e: {
+    target: {
+      files: any[]
+    }
+  }) => {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onload = (target: {
+      target: any;
+    }) => {
+      setFileInput(target.target?.result)
+    };
+    fileReader.readAsDataURL(file);
+  };
+
+  const handleChange = (e: {
+    target: {
+      name: string;
+      value: string;
+    };
+  }) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="About">
       <div className="container">
         <div className="About-wrapper">
-          <form 
-            className="About-primary container-small" 
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <div className="About-primary container-small">
             <Header title="პირადი ინფო" position="1/3" />
             <div className="About-input-field-wrapper">
               <div className="name-lastname">
-                <Input
-                  label="სახელი"
-                  placeholder="ანზორ"
-                  validation="მინიმუმ 2 ასო, ქართული ასოები"
-                  id="name"
-                  type="text"
-                  required={true}
-                  pattern="[\u10A0-\u10FF]+"
-                  minLength={2}
-                  errorIcon={errorIcon}
-                  successIcon={successIcon}
-                />
-                <Input
-                  label="გვარი"
-                  placeholder="მუმლაძე"
-                  validation="მინიმუმ 2 ასო, ქართული ასოები"
-                  id="lastname"
-                  type="text"
-                  required={true}
-                  pattern="[\u10A0-\u10FF]+"
-                  minLength={2}
-                  errorIcon={errorIcon}
-                  successIcon={successIcon}
-                />
+                {/* only name and lastname inputs */}
+                {inputFields
+                  .map((input) => (
+                    <Input
+                      key={input.id}
+                      {...input}
+                      handleChange={handleChange}
+                      value={values[input.name]}
+                    />
+                  ))
+                  .slice(0, 2)}
               </div>
+              {/* rest of the inputs */}
+              {inputFields
+                .map((input) => (
+                  <Input
+                    key={input.id}
+                    {...input}
+                    handleChange={handleChange}
+                    handleFile={handleUploadImg}
+                    value={values[input.name]}
+                  />
+                ))
+                .slice(2)}
+              <Link to="/experience" className="next-page">
+                <Button text="შემდეგი" btntype="btn-purple" />
+              </Link>
             </div>
-            <Input 
-              label="პირადი ფოტოს ატვირთვა"
-              type="file"
-              required={true}
-              id="file-input"
-              errorIcon={errorIcon}
-              successIcon={successIcon}
-            />
-            <Input 
-              label="ჩემ შესახებ (არასავალდებულო)"
-              placeholder="ზოგადი ინფო შენ შესახებ"
-              required={false}
-              type='textarea'
-              id="about-me-textarea"
-            />
-            <Input 
-              label="ელ.ფოსტა"
-              placeholder="anzorr666@redberry.ge შესახებ"
-              required={true}
-              type='email'
-              id="email"
-              validation="უნდა მთავრდებოდეს @redberry.ge-ით"
-              pattern=".+@redberry.ge$"
-              errorIcon={errorIcon}
-              successIcon={successIcon}
-            />
-            <Input 
-              label="მობილურის ნომერი"
-              placeholder="+995 551 12 34 56"
-              required={true}
-              type="text"
-              id="mobile-number"
-              validation="უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს"
-              minLength={9}
-              pattern="5[0-9]{8}"
-              errorIcon={errorIcon}
-              successIcon={successIcon}
-            />
-            <Link to="sadme" className="next-page">
-              <Button text="შემდეგი" btntype="btn-purple" />
-            </Link>
-          </form>
+          </div>
           <div className="About-result"></div>
         </div>
       </div>

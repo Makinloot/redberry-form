@@ -1,19 +1,7 @@
 import Button from "../button/Button";
+import { InputProps } from "../../data";
 
 import "./Input.scss";
-
-interface InputProps {
-  label: string;
-  placeholder?: string;
-  validation?: string;
-  id: string;
-  type: string;
-  required: boolean;
-  pattern?: string;
-  minLength?: number;
-  errorIcon?: string;
-  successIcon?: string;
-}
 
 const Input: React.FC<InputProps> = ({
   label,
@@ -25,7 +13,12 @@ const Input: React.FC<InputProps> = ({
   pattern,
   minLength,
   errorIcon,
-  successIcon
+  successIcon,
+  handleChange,
+  handleFile,
+  value,
+  ...othr
+  // value,
 }) => {
   if (type === "textarea") {
     return (
@@ -37,7 +30,9 @@ const Input: React.FC<InputProps> = ({
           rows={8} 
           placeholder={placeholder}
           required={required}
-          />
+          onChange={handleChange}
+          {...othr}
+        />
         <span>{validation}</span>
       </div>
     );
@@ -52,6 +47,9 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder} 
           id={id}
           required={required}
+          onChange={handleFile}
+          // {...othr}
+          // name={value}
         />
         <Button 
           text="ატვირთვა"
@@ -73,6 +71,8 @@ const Input: React.FC<InputProps> = ({
         required={required}
         pattern={pattern}
         minLength={minLength}
+        onChange={handleChange}
+        {...othr}
       />
       <span>{validation}</span>
       <img className="error-icon" src={errorIcon} alt="error icon" />

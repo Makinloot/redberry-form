@@ -31,3 +31,9 @@
   font-weight: 600;
   letter-spacing: 8%;
 }
+
+.btn-blue {
+  @extend %btn;
+  padding: 14px 21px;
+  background-color: #62A1EB;
+}
