@@ -1,0 +1,31 @@
+.About {
+  padding-bottom: 65px;
+  background-color: #F9F9F9;
+
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    min-height: 100vh;
+  }
+
+  &-primary {
+    position: relative;
+    height: 100%;
+
+    .next-page {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .name-lastname {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    width: 100%;
+  }
+
+  &-result {
+    background-color: #fff;
+  }
+}

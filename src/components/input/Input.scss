@@ -1,0 +1,84 @@
+.Input-field {
+  position: relative;
+  margin: 33px 0 29px;
+  align-items: flex-start !important;
+  font-family: 'Helvetica-regular', sans-serif;
+
+  // for input type file
+  &:has(.btn-file) {
+    position: relative;
+    margin: 54px 0;
+    justify-content: flex-start;
+    gap: 19px;
+
+    label {
+      pointer-events: none;
+    }
+    
+    input[type=file] {
+      position: absolute;
+      left: 0;
+      top: -1rem;
+      width: 344px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+
+  }
+
+  // if input is invalid
+  &:has(input:focus:invalid) {
+    color: #E52F2F;
+    input {
+      border: 1px solid #E52F2F;
+    }
+
+    .error-icon {
+      display: block;
+    }
+  }
+
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  input,
+  textarea {
+    margin: 8px 0;
+    padding: 13px 16px;
+    border: 1px solid #BCBCBC;
+    outline: none;
+    border-radius: 4px;
+    width: 100%;
+    resize: none;
+  }
+
+  // valid inputs
+  input:valid {
+    border: 1px solid #98E37E;
+  }
+
+  input:valid ~ .success-icon {
+    display: block;
+  }
+
+  ::placeholder {
+    font-family: 'Helvetica-regular';
+  }
+  
+  span {
+    font-size: .875rem;
+    color: #2E2E2E;
+  }
+
+  img {
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    display: none;
+  }
+
+}

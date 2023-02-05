@@ -1,0 +1,26 @@
+.Header {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 44px;
+  padding: 47px 0 12px;
+  justify-content: space-between !important;
+  border-bottom: 1px solid #1A1A1A;
+
+  a {
+    position: absolute;
+    left: -60px;
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    padding: 12px 16px;
+    border-radius: 50%;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  span {
+    font-size: 1.25rem;
+  }
+}

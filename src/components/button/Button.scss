@@ -1,10 +1,33 @@
+%btn {
+  color: #fff;
+  font-family: "Helvetica";
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 .btn-black {
- padding: 18px 126px;
- color: #fff;
- font-family: 'Helvetica';
- font-weight: 500;
- font-size: 1.25rem;
- background-color: #1A1A1A; 
- border-radius: 8px;
- cursor: pointer;
+  @extend %btn;
+  padding: 18px 126px;
+  font-weight: 500;
+  font-size: 1.25rem;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+}
+
+.btn-file {
+  @extend %btn;
+  font-family: 'Helvetica-regular';
+  background-color: #0e80bf;
+  padding: 4px 19px 6px;
+  font-size: 0.875rem;
+}
+
+.btn-purple {
+  @extend %btn;
+  padding: 14px 35px;
+  background-color: #6b40e3;
+  font-weight: 600;
+  letter-spacing: 8%;
 }

@@ -7,3 +7,13 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Helvetica-regular';
+  src: url('./fonts/HelveticaNeueLTGEO-55Roman.woff2') format('woff2'),
+      url('./fonts/HelveticaNeueLTGEO-55Roman.woff') format('woff'),
+      url('./fonts/HelveticaNeueLTGEO-55Roman.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
