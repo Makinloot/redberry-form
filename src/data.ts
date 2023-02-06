@@ -20,7 +20,7 @@ export interface InputProps {
     }
   }) => void;
   handleFile?: (e: any) => void;
-  value?: any;
+  value?: string;
 }
 
 export const inputFields: InputProps[] = [
@@ -143,4 +143,46 @@ export const expInputFields: InputProps[] = [
     id: "position-textarea",
     name: 'positionText'
   },
+]
+
+export const eduInputFields: InputProps[] = [
+  {
+    label: 'სასწავლებელი',
+    placeholder: "სასწავლებელი",
+    required: true,
+    type: "text",
+    id: "education-input",
+    validation: "მინიმუმ 2 სიმბოლო",
+    pattern: ".{2,}",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'education'
+  },
+  {
+    label: 'ხარისხი',
+    placeholder: "აირჩიეთ ხარისხი",
+    required: true,
+    type: "text",
+    id: "degree-input",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'degree'
+  },
+  {
+    label: 'დამთავრების რიცხვი',
+    required: true,
+    type: "date",
+    id: "education-end-input",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'educationEnd'
+  },
+  {
+    label: "აღწერა",
+    placeholder: "განათლების აღწერა",
+    required: true,
+    type: "textarea",
+    id: "education-textarea",
+    name: 'educationText'
+  }
 ]

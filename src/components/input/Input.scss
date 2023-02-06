@@ -46,6 +46,7 @@
     }
   }
 
+  // if textarea is invalid
   &:has(textarea:focus:invalid) {
     color: #E52F2F;
     textarea {
@@ -75,6 +76,7 @@
     border: 1px solid #98E37E;
   }
 
+  // valid input & textarea icons
   input:valid ~ .success-icon,
   textarea:valid ~ .success-icon {
     display: block;

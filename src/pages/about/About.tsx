@@ -8,9 +8,17 @@ import { inputFields } from "../../data";
 
 import "./About.scss";
 
+interface ValueTypes {
+  name: string;
+  lastname: string;
+  text: string;
+  email: string;
+  number: string;
+}
+
 const About = () => {
   const [fileInput, setFileInput] = useState();
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<ValueTypes | any>({
     name: "",
     lastname: "",
     text: "",
@@ -43,13 +51,13 @@ const About = () => {
   };
 
   return (
-    <div className="About">
+    <div className="Form">
       <div className="container">
-        <div className="About-wrapper">
-          <div className="About-primary container-small">
+        <div className="Form-wrapper">
+          <div className="Form-primary container-small">
             <Header title="პირადი ინფო" position="1/3" />
-            <div className="About-input-field-wrapper">
-              <div className="name-lastname">
+            <div className="Form-input-field-wrapper">
+              <div className="two-inputs-grouped">
                 {/* only name and lastname inputs */}
                 {inputFields
                   .map((input) => (
@@ -79,7 +87,7 @@ const About = () => {
               </Link>
             </div>
           </div>
-          <div className="About-result"></div>
+          <div className="Form-result"></div>
         </div>
       </div>
     </div>

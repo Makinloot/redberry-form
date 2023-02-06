@@ -48,8 +48,6 @@ const Input: React.FC<InputProps> = ({
           id={id}
           required={required}
           onChange={handleFile}
-          // {...othr}
-          // name={value}
         />
         <Button 
           text="ატვირთვა"

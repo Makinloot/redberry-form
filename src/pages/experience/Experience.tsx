@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
@@ -9,16 +10,22 @@ import "../about/About.scss";
 
 import { expInputFields } from "../../data";
 
+interface ValueTypes {
+  position: string;
+  employer: string;
+  startDate: string;
+  endDate: string;
+  positionText: string;
+}
+
 const Experience = () => {
   const [fileInput, setFileInput] = useState();
-  const [values, setValues] = useState({
+  const [values, setValues] = useState<ValueTypes | any>({
     position: "",
     employer: "",
     startDate: "",
     endDate: "",
     positionText: "",
-    // email: "",
-    // number: "",
   });
   const handleChange = (e: {
     target: {
@@ -29,15 +36,13 @@ const Experience = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  console.log(values);
-
   return (
-    <div className="About">
+    <div className="Form">
       <div className="container">
-        <div className="About-wrapper">
-          <div className="About-primary container-small">
+        <div className="Form-wrapper">
+          <div className="Form-primary container-small">
             <Header title="გამოცდილება" position="2/3" />
-            <div className="About-input-field-wrapper">
+            <div className="Form-input-field-wrapper">
               {expInputFields
                 .map((input) => (
                   <Input
@@ -49,7 +54,7 @@ const Experience = () => {
                 ))
                 .slice(0, 2)
               }
-              <div className="name-lastname">
+              <div className="two-inputs-grouped">
                 {expInputFields.map(input => (
                   <Input 
                     key={input.id}
@@ -76,17 +81,21 @@ const Experience = () => {
               btntype="btn-blue"
             />
             <div className="next-prev flex-row">
-              <Button 
-                text="უკან"
-                btntype="btn-purple"
-              />
-              <Button 
-                text="შემდეგი"
-                btntype="btn-purple"
-              />
+              <Link to="/about">
+                <Button 
+                  text="უკან"
+                  btntype="btn-purple"
+                />
+              </Link>
+              <Link to="/education">
+                <Button 
+                  text="შემდეგი"
+                  btntype="btn-purple"
+                />
+              </Link>
             </div>
           </div>
-          <div className="About-result"></div>
+          <div className="Form-result"></div>
         </div>
       </div>
     </div>
