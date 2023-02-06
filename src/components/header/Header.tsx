@@ -6,9 +6,10 @@ const Header: React.FC<{
   title: string;
   position: string;
 }> = ({title, position}) => {
+
   return (
     <div className="Header flex-row">
-      <a href="/" className='flex-col'>
+      <a href="/" className='flex-col' onClick={() => localStorage.clear()}>
         <img src={vectorLeft} />  
       </a>
       <h3>{title}</h3>

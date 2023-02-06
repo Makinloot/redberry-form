@@ -17,8 +17,8 @@ const Input: React.FC<InputProps> = ({
   handleChange,
   handleFile,
   value,
+  inputVal,
   ...othr
-  // value,
 }) => {
   if (type === "textarea") {
     return (
@@ -31,6 +31,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           required={required}
           onChange={handleChange}
+          value={inputVal}
           {...othr}
         />
         <span>{validation}</span>
@@ -70,6 +71,7 @@ const Input: React.FC<InputProps> = ({
         pattern={pattern}
         minLength={minLength}
         onChange={handleChange}
+        value={inputVal}
         {...othr}
       />
       <span>{validation}</span>

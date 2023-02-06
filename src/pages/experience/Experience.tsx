@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
-
-import "./Experience.scss";
-import "../about/About.scss";
 
 import { expInputFields } from "../../data";
 
@@ -19,7 +16,6 @@ interface ValueTypes {
 }
 
 const Experience = () => {
-  const [fileInput, setFileInput] = useState();
   const [values, setValues] = useState<ValueTypes | any>({
     position: "",
     employer: "",
@@ -27,6 +23,7 @@ const Experience = () => {
     endDate: "",
     positionText: "",
   });
+  
   const handleChange = (e: {
     target: {
       name: string;
@@ -34,7 +31,19 @@ const Experience = () => {
     };
   }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    localStorage.setItem(e.target.name, e.target.value);
   };
+
+  useEffect(() => {
+    const locValues = {
+      position: localStorage.getItem('position') || '',
+      employer: localStorage.getItem('employer') || '',
+      startDate: localStorage.getItem('startDate') || '',
+      endDate: localStorage.getItem('endDate') || '',
+      positionText: localStorage.getItem('positionText') || '',
+    }
+    setValues(locValues)
+  }, []);
 
   return (
     <div className="Form">
@@ -50,6 +59,7 @@ const Experience = () => {
                     {...input}
                     handleChange={handleChange}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                 ))
                 .slice(0, 2)
@@ -61,6 +71,7 @@ const Experience = () => {
                     {...input}
                     handleChange={handleChange}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                 )).slice(2,4)}
               </div>
@@ -71,6 +82,7 @@ const Experience = () => {
                     {...input}
                     handleChange={handleChange}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                   <hr />
                 </>

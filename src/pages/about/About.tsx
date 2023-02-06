@@ -1,12 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 
 import { inputFields } from "../../data";
-
-import "./About.scss";
 
 interface ValueTypes {
   name: string;
@@ -17,7 +15,7 @@ interface ValueTypes {
 }
 
 const About = () => {
-  const [fileInput, setFileInput] = useState();
+  const [fileInput, setFileInput] = useState<string | undefined>();
   const [values, setValues] = useState<ValueTypes | any>({
     name: "",
     lastname: "",
@@ -37,6 +35,7 @@ const About = () => {
       target: any;
     }) => {
       setFileInput(target.target?.result)
+      localStorage.setItem('file', target.target.result)
     };
     fileReader.readAsDataURL(file);
   };
@@ -48,7 +47,20 @@ const About = () => {
     };
   }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    localStorage.setItem(e.target.name, e.target.value);
   };
+
+  useEffect(() => {
+    const locValues = {
+      name: localStorage.getItem('name') || '',
+      lastname: localStorage.getItem('lastname') || '',
+      text: localStorage.getItem('text') || '',
+      email: localStorage.getItem('email') || '',
+      number: localStorage.getItem('number') || '',
+    }
+    setValues(locValues)
+    setFileInput(localStorage.getItem('file') || undefined)
+  }, []);
 
   return (
     <div className="Form">
@@ -66,6 +78,7 @@ const About = () => {
                       {...input}
                       handleChange={handleChange}
                       value={values[input.name]}
+                      inputVal={values[input.name]}
                     />
                   ))
                   .slice(0, 2)}
@@ -79,6 +92,7 @@ const About = () => {
                     handleChange={handleChange}
                     handleFile={handleUploadImg}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                 ))
                 .slice(2)}

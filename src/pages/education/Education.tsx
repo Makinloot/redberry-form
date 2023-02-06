@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../components/header/Header";
@@ -22,9 +22,18 @@ const Education = () => {
     };
   }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    localStorage.setItem(e.target.name, e.target.value);
   };
 
-  console.log(values)
+  useEffect(() => {
+    const locValues = {
+      education: localStorage.getItem('education') || '',
+      degree: localStorage.getItem('degree') || '',
+      educationEnd: localStorage.getItem('educationEnd') || '',
+      educationText: localStorage.getItem('educationText') || '',
+    }
+    setValues(locValues)
+  }, []);
 
   return (
     <div className="Form">
@@ -39,6 +48,7 @@ const Education = () => {
                   {...input}
                   handleChange={handleChange}
                   value={values[input.name]}
+                  inputVal={values[input.name]}
                 />
               )).slice(0, 1)}
               <div className="two-inputs-grouped">
@@ -48,6 +58,7 @@ const Education = () => {
                     {...input}
                     handleChange={handleChange}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                 )).slice(1, 3)}
               </div>
@@ -57,6 +68,7 @@ const Education = () => {
                     {...input}
                     handleChange={handleChange}
                     value={values[input.name]}
+                    inputVal={values[input.name]}
                   />
                   <hr />
                 </div>

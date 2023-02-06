@@ -21,6 +21,7 @@ export interface InputProps {
   }) => void;
   handleFile?: (e: any) => void;
   value?: string;
+  inputVal?: string;
 }
 
 export const inputFields: InputProps[] = [
@@ -35,7 +36,7 @@ export const inputFields: InputProps[] = [
     minLength: 2,
     errorIcon: errorIcon,
     successIcon: successIcon,
-    name: 'name'
+    name: 'name',
   },
   {
     label: "გვარი",
