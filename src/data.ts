@@ -187,3 +187,96 @@ export const eduInputFields: InputProps[] = [
     name: 'educationText'
   }
 ]
+
+export const expInputFieldsAddit: InputProps[] = [
+  {
+    label: "თანამდებიბა",
+    placeholder: "დეველოპერი, დიზაინერი, ა.შ.",
+    required: true,
+    type: "text",
+    id: "position-input-addit",
+    validation: "მინიმუმ 2 სიმბოლო",
+    pattern: ".{2,}",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'positionAddit'
+  },
+  {
+    label: "დამსაქმებელი",
+    placeholder: "დამსაქმებელი",
+    required: true,
+    type: "text",
+    id: "employer-input-addit",
+    validation: "მინიმუმ 2 სიმბოლო",
+    pattern: ".{2,}",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'employerAddit'
+  },
+  {
+    label: 'დაწყების რიცხვი',
+    placeholder: 'test',
+    required: true,
+    type: 'date',
+    id: 'startDateAddit',
+    name: 'startDateAddit'
+  },
+  {
+    label: 'დამთავრების რიცხვი',
+    placeholder: 'test',
+    required: true,
+    type: 'date',
+    id: 'endDateAddit',
+    name: 'endDateAddit'
+  },
+  {
+    label: "აღწერა",
+    placeholder: "როლი თანამდებობაზე და ზოგადი აღწერა",
+    required: true,
+    type: "textarea",
+    id: "position-textarea-addit",
+    name: 'positionTextAddit'
+  },
+]
+
+export const eduInputFieldsAddit: InputProps[] = [
+  {
+    label: 'სასწავლებელი',
+    placeholder: "სასწავლებელი",
+    required: true,
+    type: "text",
+    id: "educationAddit-input",
+    validation: "მინიმუმ 2 სიმბოლო",
+    pattern: ".{2,}",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'educationAddit'
+  },
+  {
+    label: 'ხარისხი',
+    placeholder: "აირჩიეთ ხარისხი",
+    required: true,
+    type: "text",
+    id: "degreeAddit-input",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'degreeAddit'
+  },
+  {
+    label: 'დამთავრების რიცხვი',
+    required: true,
+    type: "date",
+    id: "educationAddit-end-input",
+    errorIcon: errorIcon,
+    successIcon: successIcon,
+    name: 'educationEndAddit'
+  },
+  {
+    label: "აღწერა",
+    placeholder: "განათლების აღწერა",
+    required: true,
+    type: "textarea",
+    id: "educationAddit-textarea",
+    name: 'educationTextAddit'
+  }
+]

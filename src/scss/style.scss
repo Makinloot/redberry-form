@@ -44,4 +44,10 @@
     margin-top: 115px;
     justify-content: space-between;
   }
+
+  .additInput {
+    &.hide {
+      display: none;
+    }
+  }
 }

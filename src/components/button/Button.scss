@@ -37,3 +37,9 @@
   padding: 14px 21px;
   background-color: #62A1EB;
 }
+
+.btn-red {
+  @extend %btn;
+  padding: 14px 21px;
+  background-color: #E52F2F;
+}

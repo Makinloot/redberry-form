@@ -1,70 +1,29 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+// components
 import Header from "../../components/header/Header";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 
+// data & types
 import { inputFields } from "../../data";
+import { ValueTypes } from "../../App";
+import { handleChange } from "../../App";
+import { handleUploadImg } from "../../App";
 
-interface ValueTypes {
-  name: string;
-  lastname: string;
-  text: string;
-  email: string;
-  number: string;
+interface AboutProps {
+  values: ValueTypes | any,
+  fileInput: string | undefined,
+  handleChange: (e: handleChange) => void,
+  handleUploadImg: (e: handleUploadImg) => void,
 }
 
-const About = () => {
-  const [fileInput, setFileInput] = useState<string | undefined>();
-  const [values, setValues] = useState<ValueTypes | any>({
-    name: "",
-    lastname: "",
-    text: "",
-    email: "",
-    number: "",
-  });
-
-  const handleUploadImg = (e: {
-    target: {
-      files: any[]
-    }
-  }) => {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onload = (target: {
-      target: any;
-    }) => {
-      setFileInput(target.target?.result)
-      localStorage.setItem('file', target.target.result)
-    };
-    fileReader.readAsDataURL(file);
-  };
-
-  const handleChange = (e: {
-    target: {
-      name: string;
-      value: string;
-    };
-  }) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-    localStorage.setItem(e.target.name, e.target.value);
-  };
-
-  useEffect(() => {
-    const locValues = {
-      name: localStorage.getItem('name') || '',
-      lastname: localStorage.getItem('lastname') || '',
-      text: localStorage.getItem('text') || '',
-      email: localStorage.getItem('email') || '',
-      number: localStorage.getItem('number') || '',
-    }
-    setValues(locValues)
-    setFileInput(localStorage.getItem('file') || undefined)
-  }, []);
+const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUploadImg}) => {
 
   return (
     <div className="Form">
       <div className="container">
+        <img src={fileInput} alt="" />
         <div className="Form-wrapper">
           <div className="Form-primary container-small">
             <Header title="პირადი ინფო" position="1/3" />
