@@ -1,14 +1,33 @@
 @import './assets/reset';
 @import './assets/utils';
 
+.form-container {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 100vh;
+}
+
 .Form {
   padding-bottom: 65px;
   background-color: #F9F9F9;
 
-  &-wrapper {
-    // display: grid;
-    // grid-template-columns: 60% 40%;
-    // min-height: 100vh;
+  // if about inputs are invalid don't show next page btn
+  &:has(#name:invalid, #lastname:invalid, #email:invalid, #mobile-number:invalid) {
+    #about-next-page {
+      display: none;
+    }
+  }
+  // if experience inputs are invalid don't show next page btn
+  &:has(#position-input:invalid, #employer-input:invalid, #startDate:invalid, #endDate:invalid, #position-textarea:invalid) {
+    #experience-next-page {
+      display: none;
+    }
+  }
+  // if education inputs are invalid don't show next page btn
+  &:has(#education-input:invalid, #degree-input:invalid, #education-end-input:invalid, #education-textarea:invalid) {
+    #education-next-page {
+      display: none;
+    }
   }
 
   &-primary {
@@ -41,7 +60,7 @@
   }
 
   .next-prev {
-    margin-top: 115px;
+    margin-top: 85px;
     justify-content: space-between;
   }
 
@@ -50,11 +69,4 @@
       display: none;
     }
   }
-}
-
-.form-container {
-  // background-color: red;
-  display: grid;
-  grid-template-columns: 60% 40%;
-  min-height: 100vh;
 }

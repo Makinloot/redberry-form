@@ -54,12 +54,11 @@ const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUpl
                   />
                 ))
                 .slice(2)}
-              <Link to="/experience" className="next-page">
+              <Link to="/experience" className="next-page" id="about-next-page">
                 <Button text="შემდეგი" btntype="btn-purple" />
               </Link>
             </div>
           </div>
-          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>

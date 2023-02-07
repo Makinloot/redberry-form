@@ -53,12 +53,11 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
               <Link to="/about">
                 <Button text="უკან" btntype="btn-purple" />
               </Link>
-              <Link to="/education">
+              <Link to="/education" id="experience-next-page">
                 <Button text="შემდეგი" btntype="btn-purple" />
               </Link>
             </div>
           </div>
-          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>

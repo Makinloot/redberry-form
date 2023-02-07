@@ -53,12 +53,11 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
               <Link to="/experience">
                 <Button text="უკან" btntype="btn-purple" />
               </Link>
-              <Link to="/">
+              <Link to="/" id="education-next-page">
                 <Button text="დასრულება" btntype="btn-purple" />
               </Link>
             </div>
           </div>
-          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>
