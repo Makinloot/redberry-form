@@ -6,9 +6,9 @@
   background-color: #F9F9F9;
 
   &-wrapper {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    min-height: 100vh;
+    // display: grid;
+    // grid-template-columns: 60% 40%;
+    // min-height: 100vh;
   }
 
   &-primary {
@@ -50,4 +50,11 @@
       display: none;
     }
   }
+}
+
+.form-container {
+  // background-color: red;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 100vh;
 }

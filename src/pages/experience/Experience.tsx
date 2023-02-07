@@ -58,7 +58,7 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
               </Link>
             </div>
           </div>
-          <div className="Form-result"></div>
+          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>

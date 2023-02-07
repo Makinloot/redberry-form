@@ -58,7 +58,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
               </Link>
             </div>
           </div>
-          <div className="Form-result"></div>
+          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>

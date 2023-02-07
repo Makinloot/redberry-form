@@ -23,7 +23,6 @@ const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUpl
   return (
     <div className="Form">
       <div className="container">
-        <img src={fileInput} alt="" />
         <div className="Form-wrapper">
           <div className="Form-primary container-small">
             <Header title="პირადი ინფო" position="1/3" />
@@ -60,7 +59,7 @@ const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUpl
               </Link>
             </div>
           </div>
-          <div className="Form-result"></div>
+          {/* <div className="Form-result"></div> */}
         </div>
       </div>
     </div>

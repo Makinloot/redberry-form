@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Experience from "./pages/experience/Experience";
 import Education from "./pages/education/Education";
+import Resume from "./components/resume/Resume";
 
 import "./css/style.css";
 
@@ -106,34 +107,67 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <form action="#">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/about"
-              element={
-                <About
-                  values={values}
-                  fileInput={fileInput}
-                  handleChange={handleChange}
-                  handleUploadImg={handleUploadImg}
-                />
-              }
-            />
-            <Route
-              path="/experience"
-              element={
-                <Experience values={values} handleChange={handleChange} />
-              }
-            />
-            <Route
-              path="/education"
-              element={
-                <Education values={values} handleChange={handleChange} />
-              }
-            />
-          </Routes>
-        </form>
+        <div className="container">
+          <form action="#" className="form-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/about"
+                element={
+                  <About
+                    values={values}
+                    fileInput={fileInput}
+                    handleChange={handleChange}
+                    handleUploadImg={handleUploadImg}
+                  />
+                }
+              />
+              <Route
+                path="/experience"
+                element={
+                  <Experience values={values} handleChange={handleChange} />
+                }
+              />
+              <Route
+                path="/education"
+                element={
+                  <Education values={values} handleChange={handleChange} />
+                }
+              />
+            </Routes>
+            <div className="Resume">
+            {/* text: "",
+    email: "",
+    number: "",
+    position: "",
+    employer: "",
+    startDate: "",
+    endDate: "",
+    positionText: "",
+    education: "",
+    degree: "",
+    educationEnd: "",
+    educationText: "", */}
+              <Resume 
+                name={values.name}
+                lastName={values.lastname}
+                email={values.email}
+                mobile={values.number}
+                aboutText={values.text}
+                position={values.position}
+                employer={values.employer}
+                expStartDate={values.startDate}
+                expEndDate={values.endDate}
+                expDescription={values.positionText}
+                educationPlace={values.education}
+                degree={values.degree}
+                educationEndDate={values.educationEnd}
+                educationDescription={values.educationText}
+                userImg={fileInput}
+              />
+            </div>
+          </form>
+        </div>
       </div>
     </Router>
   );
