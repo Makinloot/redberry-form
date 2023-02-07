@@ -1,6 +1,8 @@
-import emailIcon from "../../assets/email.png";
-import mobileIcon from "../../assets/mobile.png";
 import resumeIcon from "../../assets/resume-logo.png";
+
+import Hero from "./Hero";
+import Exp from "./Exp";
+import Edu from "./Edu";
 
 import "./Resume.scss";
 
@@ -41,57 +43,27 @@ const Resume: React.FC<ResumeProps> = ({
 }) => {
   return (
     <>
-      <div className="Resume-hero">
-        <div>
-          <div className={(name || lastName) ? "Resume-name" : "Resume-name hidden"}>
-            <h2>{name} {lastName}</h2>
-          </div>
-          <div className="Resume-contact flex-col">
-            <span className={email ? "flex-row" : "hidden"}>
-              <img src={emailIcon} />
-              {email}
-            </span>
-            <span className={mobile ? "flex-row" : "hidden"}>
-              <img src={mobileIcon} />
-              +995 {mobile}
-            </span>
-          </div>
-          <div className={aboutText ? "Resume-about" : "Resume-about hidden"}>
-            <h3>ჩემ შესახებ</h3>
-            <p>
-             {aboutText}
-            </p>
-            <img className={userImg ? "user-img" : "user-img hidden"} src={userImg} />
-            <hr />
-          </div>
-        </div>
-      </div>
-      <div className={(position || employer || expStartDate || expEndDate || expDescription) ? "Resume-experience" : "Resume-experience hidden"}>
-        <h3>გამოცდილება</h3>
-        <div className="position flex-col">
-          <p>
-            {position && position} {employer && `, ${employer}`}
-          </p>
-          <span className="date">{expStartDate && expStartDate} {expEndDate && `- ${expEndDate}`}</span>
-        </div>
-        <p>
-          {expDescription}
-        </p>
-        <hr />
-      </div>
-      <div className={(educationPlace || degree || educationEndDate || educationDescription) ? "Resume-education" : "Resume-education hidden"}>
-        <h3>განათლება</h3>
-        <div className="degree flex-col">
-          <p>
-            {educationPlace} {degree && `, ${degree}`}
-          </p>
-          <span className="date">{educationEndDate}</span>
-        </div>
-        <p>
-          {educationDescription}
-        </p>
-        <hr />
-      </div>
+      <Hero 
+        name={name}
+        lastName={lastName}
+        email={email}
+        mobile={mobile}
+        aboutText={aboutText}
+        userImg={userImg}
+      />
+      <Exp 
+        position={position}
+        employer={employer}
+        expStartDate={expStartDate}
+        expEndDate={expEndDate}
+        expDescription={expDescription}
+      />
+      <Edu 
+        educationPlace={educationPlace}
+        degree={degree}
+        educationEndDate={educationEndDate}
+        educationDescription={educationDescription}
+      />
       <img style={{position: 'absolute', bottom: 44, left: 80, zIndex: 100}} src={resumeIcon} />
     </>
   );

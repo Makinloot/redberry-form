@@ -52,6 +52,15 @@ function App() {
     degree: "",
     educationEnd: "",
     educationText: "",
+    educationAddit: "",
+    degreeAddit: "",
+    educationEndAddit: "",
+    educationTextAddit: "",
+    positionAddit: "",
+    employerAddit: "",
+    startDateAddit: "",
+    endDateAddit: "",
+    positionTextAddit: "",
   });
 
   // upload img with file type input
@@ -136,18 +145,6 @@ function App() {
               />
             </Routes>
             <div className="Resume">
-            {/* text: "",
-    email: "",
-    number: "",
-    position: "",
-    employer: "",
-    startDate: "",
-    endDate: "",
-    positionText: "",
-    education: "",
-    degree: "",
-    educationEnd: "",
-    educationText: "", */}
               <Resume 
                 name={values.name}
                 lastName={values.lastname}

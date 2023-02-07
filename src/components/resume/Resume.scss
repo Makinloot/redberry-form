@@ -11,12 +11,13 @@
   }
 
   hr {
-    margin: 19px 0 24px;
+    margin: 39px 0 24px;
   }
 
   p {
     font-family: 'Helvetica-regular';
     font-size: 1rem;
+    line-break: anywhere;
   }
 
   &-hero {
@@ -30,6 +31,7 @@
       top: 0;
       right: 0;
       position: absolute;
+      object-fit: cover;
     }
 
     @media (max-width: 1550px) {
@@ -59,6 +61,21 @@
     span {
       gap: 11px;
       font-size: 1.125rem;
+    }
+  }
+
+  &-about {
+
+    &.hidden {
+      display: block !important;
+
+      h3,p,hr {
+        display: none;
+      }
+    }
+
+    p {
+      max-width: 310px;
     }
   }
 
