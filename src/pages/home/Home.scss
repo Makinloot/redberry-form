@@ -1,8 +1,11 @@
+body:has(.Home) {
+  overflow: hidden;
+}
+
 .Home {
   position: absolute;
   left: 0;
   z-index: 100000;
-  opacity: 1;
   width: 100%;
   background-color: #fff;
   background-image: url('../../assets/bg-home.png');

@@ -38,16 +38,15 @@ const ExpForm: React.FC<{
       </div>
       {inputFields
         .map((input) => (
-          <>
+          <div key={input.id}>
             <Input
-              key={input.id}
               {...input}
               handleChange={handleChange}
               value={values[input.name]}
               inputVal={values[input.name]}
             />
             <hr />
-          </>
+          </div>
         ))
         .slice(-1)}
     </>

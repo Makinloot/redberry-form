@@ -18,13 +18,13 @@
     }
   }
   // if experience inputs are invalid don't show next page btn
-  &:has(#position-input:invalid, #employer-input:invalid, #startDate:invalid, #endDate:invalid, #position-textarea:invalid) {
+  &:has(#position-input:invalid, #employer-input:invalid, #startDate:invalid, #endDate:invalid, #position-textarea:invalid, #position-input-addit:invalid, #employer-input-addit:invalid, #startDateAddit:invalid, #endDateAddit:invalid, #position-textarea-addit:invalid) {
     #experience-next-page {
       display: none;
     }
   }
   // if education inputs are invalid don't show next page btn
-  &:has(#education-input:invalid, #degree-input:invalid, #education-end-input:invalid, #education-textarea:invalid) {
+  &:has(#education-input:invalid, #degree-input:invalid, #education-end-input:invalid, #education-textarea:invalid, #educationAddit-input:invalid, #degreeAddit-input:invalid, #educationAddit-end-input:invalid, #educationAddit-textarea:invalid) {
     #education-next-page {
       display: none;
     }

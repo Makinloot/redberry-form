@@ -20,6 +20,14 @@ interface EducationProps {
 const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
   const [show, setShow] = useState<boolean>(false);
 
+  const handleRemoveAdditEdu = () => {
+    localStorage.removeItem('educationAddit')
+    localStorage.removeItem('degreeAddit')
+    localStorage.removeItem('educationEndAddit')
+    localStorage.removeItem('educationTextAddit')
+    window.location.reload()
+  }
+
   return (
     <div className="Form">
       <div className="container">
@@ -32,16 +40,23 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
                 handleChange={handleChange}
                 values={values}
               />
-              <div className={show ? "additInput" : "additInput hide"}>
-                <EduForm
-                  inputFields={eduInputFieldsAddit}
-                  handleChange={handleChange}
-                  values={values}
-                />
-              </div>
+              {show ?
+                <div className="additInput">
+                  <EduForm
+                    inputFields={eduInputFieldsAddit}
+                    handleChange={handleChange}
+                    values={values}
+                  />
+                </div>
+                :
+                null
+              }
             </div>
             {show ? (
-              <div onClick={() => setShow(!show)}>
+              <div onClick={() => {
+                setShow(!show)
+                handleRemoveAdditEdu()
+              }}>
                 <Button text="სხვა სასწავლებლის წაშლა" btntype="btn-red" />
               </div>
             ) : (

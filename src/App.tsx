@@ -107,7 +107,7 @@ function App() {
       employerAddit: localStorage.getItem("employerAddit") || "",
       startDateAddit: localStorage.getItem("startDateAddit") || "",
       endDateAddit: localStorage.getItem("endDateAddit") || "",
-      positionTextAddit: localStorage.getItem("positionText") || "",
+      positionTextAddit: localStorage.getItem("positionTextAddit") || "",
     };
     setValues(locValues);
     setFileInput(localStorage.getItem("file") || undefined);
@@ -161,6 +161,15 @@ function App() {
                 educationEndDate={values.educationEnd}
                 educationDescription={values.educationText}
                 userImg={fileInput}
+                educationAddit={values.educationAddit}
+                degreeAddit={values.degreeAddit}
+                educationEndAddit={values.educationEndAddit}
+                educationTextAddit={values.educationTextAddit}
+                positionAddit={values.positionAddit}
+                employerAddit={values.employerAddit}
+                startDateAddit={values.startDateAddit}
+                endDateAddit={values.endDateAddit}
+                positionTextAddit={values.positionTextAddit}
               />
             </div>
           </form>

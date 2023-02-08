@@ -20,6 +20,15 @@ interface ExperienceProps {
 const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
   const [show, setShow] = useState<boolean>(false);
 
+  const handleRemoveAdditExp = () => {
+    localStorage.removeItem('positionAddit')
+    localStorage.removeItem('employerAddit')
+    localStorage.removeItem('startDateAddit')
+    localStorage.removeItem('endDateAddit')
+    localStorage.removeItem('positionTextAddit')
+    window.location.reload()
+  }
+
   return (
     <div className="Form">
       <div className="container">
@@ -32,16 +41,23 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
                 handleChange={handleChange}
                 values={values}
               />
-              <div className={show ? "additInput" : "additInput hide"}>
-                <ExpForm
-                  inputFields={expInputFieldsAddit}
-                  handleChange={handleChange}
-                  values={values}
-                />
-              </div>
+              {show ?
+                <div className="additInput">
+                  <ExpForm
+                    inputFields={expInputFieldsAddit}
+                    handleChange={handleChange}
+                    values={values}
+                  />
+                </div>
+                :
+                null  
+              }              
             </div>
             {show ? (
-              <div onClick={() => setShow(!show)}>
+              <div onClick={() => {
+                setShow(!show)
+                handleRemoveAdditExp()
+              }}>
                 <Button text="სხვა სასწავლებლის წაშლა" btntype="btn-red" />
               </div>
             ) : (

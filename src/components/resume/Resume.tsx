@@ -22,6 +22,15 @@ interface ResumeProps {
   educationEndDate: string;
   educationDescription: string;
   userImg: string | undefined;
+  educationAddit: string;
+  degreeAddit: string;
+  educationEndAddit: string;
+  educationTextAddit: string;
+  positionAddit: string;
+  employerAddit: string;
+  startDateAddit: string;
+  endDateAddit: string;
+  positionTextAddit: string;
 }
 
 const Resume: React.FC<ResumeProps> = ({
@@ -39,7 +48,16 @@ const Resume: React.FC<ResumeProps> = ({
   degree,
   educationEndDate,
   educationDescription,
-  userImg
+  userImg,
+  educationAddit,
+  degreeAddit,
+  educationEndAddit,
+  educationTextAddit,
+  positionAddit,
+  employerAddit,
+  startDateAddit,
+  endDateAddit,
+  positionTextAddit,
 }) => {
   return (
     <>
@@ -58,11 +76,24 @@ const Resume: React.FC<ResumeProps> = ({
         expEndDate={expEndDate}
         expDescription={expDescription}
       />
+      <Exp 
+        position={positionAddit}
+        employer={employerAddit}
+        expStartDate={startDateAddit}
+        expEndDate={endDateAddit}
+        expDescription={positionTextAddit}
+      />
       <Edu 
         educationPlace={educationPlace}
         degree={degree}
         educationEndDate={educationEndDate}
         educationDescription={educationDescription}
+      />
+      <Edu 
+        educationPlace={educationAddit}
+        degree={degreeAddit}
+        educationEndDate={educationEndAddit}
+        educationDescription={educationTextAddit}
       />
       <img style={{position: 'absolute', bottom: 44, left: 80, zIndex: 100}} src={resumeIcon} />
     </>
