@@ -63,20 +63,22 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="Input-field flex-col">
       <label htmlFor={id}>{label}</label>
-      <input 
-        type={type} 
-        placeholder={placeholder} 
-        id={id}
-        required={required}
-        pattern={pattern}
-        minLength={minLength}
-        onChange={handleChange}
-        value={inputVal}
-        {...othr}
-      />
+      <div className="input-container">
+        <input 
+          type={type} 
+          placeholder={placeholder} 
+          id={id}
+          required={required}
+          pattern={pattern}
+          minLength={minLength}
+          onChange={handleChange}
+          value={inputVal}
+          {...othr}
+        />
+        <img className="error-icon" src={errorIcon} alt="error icon" />
+        <img className="success-icon" src={successIcon} alt="success icon" />
+      </div>
       <span>{validation}</span>
-      <img className="error-icon" src={errorIcon} alt="error icon" />
-      <img className="success-icon" src={successIcon} alt="success icon" />
     </div>
   );
 };

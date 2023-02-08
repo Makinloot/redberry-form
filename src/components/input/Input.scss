@@ -4,6 +4,11 @@
   align-items: flex-start !important;
   font-family: 'Helvetica-regular', sans-serif;
 
+  .input-container {
+    width: 100%;
+    position: relative;
+  }
+
   // for input type date
   &:has(input[type=date]) {
     img {
