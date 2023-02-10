@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Input from "../input/Input";
 
 // data & types
@@ -10,6 +11,22 @@ const EduForm: React.FC<{
   values: ValueTypes | any;
   handleChange: (e: handleChange) => void;
 }> = ({ inputFields, handleChange, values }) => {
+  const [degrees, setDegrees] = useState<[{
+    id: number;
+    title: string;
+  }] | null>(null);
+
+  // fetch degrees list
+  const handleFetchDegrees = async () => {
+    const res = await fetch(`https://resume.redberryinternship.ge/api/degrees`)
+    const data = await res.json();
+    setDegrees(data);
+  }
+
+  useEffect(() => {
+    handleFetchDegrees();
+  }, []);
+
   return (
     <>
       {inputFields
@@ -32,6 +49,7 @@ const EduForm: React.FC<{
               handleChange={handleChange}
               value={values[input.name]}
               inputVal={values[input.name]}
+              degrees={degrees}
             />
           ))
           .slice(1, 3)}

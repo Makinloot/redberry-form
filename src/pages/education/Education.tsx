@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // components
@@ -17,8 +17,19 @@ interface EducationProps {
   handleChange: (e: handleChange) => void;
 }
 
+
 const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
-  const [show, setShow] = useState<boolean>(false);
+  const [show, setShow] = useState<string | null>(localStorage.getItem('additEduFields'));
+  
+  const handleAdditionalFields = () => {
+    if(localStorage.getItem('additEduFields') === 'false') {
+      localStorage.setItem('additEduFields', 'true');
+      setShow('true')
+    } else {
+      localStorage.setItem('additEduFields', 'false');
+      setShow('false')
+    }
+  }
 
   const handleRemoveAdditEdu = () => {
     localStorage.removeItem('educationAddit')
@@ -27,7 +38,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
     localStorage.removeItem('educationTextAddit')
     window.location.reload()
   }
-
+  
   return (
     <div className="Form">
       <div className="container">
@@ -40,7 +51,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
                 handleChange={handleChange}
                 values={values}
               />
-              {show ?
+              {show === 'true' ?
                 <div className="additInput">
                   <EduForm
                     inputFields={eduInputFieldsAddit}
@@ -52,15 +63,17 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
                 null
               }
             </div>
-            {show ? (
+            {show === 'true' ? (
               <div onClick={() => {
-                setShow(!show)
                 handleRemoveAdditEdu()
+                handleAdditionalFields()
               }}>
                 <Button text="სხვა სასწავლებლის წაშლა" btntype="btn-red" />
               </div>
             ) : (
-              <div onClick={() => setShow(!show)}>
+              <div onClick={() => {
+                handleAdditionalFields()
+              }}>
                 <Button text="სხვა სასწავლებლის დამატება" btntype="btn-blue" />
               </div>
             )}

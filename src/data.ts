@@ -22,6 +22,11 @@ export interface InputProps {
   handleFile?: (e: any) => void;
   value?: string;
   inputVal?: string;
+  readOnly?: boolean;
+  degrees?: [{
+    id: number;
+    title: string;
+  }] | null;
 }
 
 export const inputFields: InputProps[] = [
@@ -167,7 +172,7 @@ export const eduInputFields: InputProps[] = [
     id: "degree-input",
     errorIcon: errorIcon,
     successIcon: successIcon,
-    name: 'degree'
+    name: 'degree',
   },
   {
     label: 'დამთავრების რიცხვი',
