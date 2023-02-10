@@ -1,8 +1,8 @@
 import './Button.scss';
 
-const Button: React.FC<{text: string, btntype: string}> = ({ text, btntype }): JSX.Element => {
+const Button: React.FC<{text: string, btntype: string, submit?: "submit"}> = ({ text, btntype, submit }): JSX.Element => {
   return (
-    <button className={btntype} type="button">{text}</button>
+    <button className={btntype} type={submit || "button"}>{text}</button>
   )
 }
 

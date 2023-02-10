@@ -81,9 +81,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
               <Link to="/experience">
                 <Button text="უკან" btntype="btn-purple" />
               </Link>
-              <a href="/finished" id="education-next-page">
-                <Button text="დასრულება" btntype="btn-purple" />
-              </a>
+              <Button submit="submit" text="დასრულება" btntype="btn-purple" />
             </div>
           </div>
         </div>

@@ -130,7 +130,7 @@ function App() {
     <Router>
       <div className="App">
         <div className="container">
-          <form action="#" ref={formRef} className="form-container">
+          <form action="/finished" ref={formRef} className="form-container">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route
