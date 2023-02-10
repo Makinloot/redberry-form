@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Home.scss';
 
 import logo from '../../assets/redberry-logo.png';
@@ -16,9 +15,9 @@ const Home = () => {
             </div>
           </div>
           <div style={{position: 'relative'}}>
-            <Link to="/about">
+            <a href="/about">
               <Button btntype='btn-black' text='რეზიუმეს დამატება' />
-            </Link>
+            </a>
             <img className='mark' src={mark} />
           </div>
         </div>

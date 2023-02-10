@@ -1,4 +1,7 @@
+import { useState } from "react";
 import resumeIcon from "../../assets/resume-logo.png";
+import vectorLeft from '../../assets/vector-left.png';
+import vectorClose from '../../assets/vector-x.png';
 
 import Hero from "./Hero";
 import Exp from "./Exp";
@@ -59,8 +62,20 @@ const Resume: React.FC<ResumeProps> = ({
   endDateAddit,
   positionTextAddit,
 }) => {
+
+  const [popup, setPopup] = useState<boolean>(true);
+
   return (
     <>
+      <a href="/" className='home flex-col' onClick={() => localStorage.clear()}>
+        <img src={vectorLeft} />  
+      </a>
+      <div className={popup ? "popup" : "popup hidden"}>
+        <p>
+          რეზიუმე წარმატებით გაიგზავნა  🎉
+        </p>
+        <img src={vectorClose} onClick={() => setPopup(!popup)} />
+      </div>
       <Hero 
         name={name}
         lastName={lastName}

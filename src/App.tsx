@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/home/Home";
@@ -36,6 +36,8 @@ export type handleUploadImg = {
 };
 
 function App() {
+  const [formChildren, setFormChildren] = useState<boolean>(false);
+  const formRef = useRef<any>();
   const [fileInput, setFileInput] = useState<string | undefined>();
   const [values, setValues] = useState<ValueTypes | any>({
     name: "",
@@ -80,6 +82,13 @@ function App() {
     localStorage.setItem(e.target.name, e.target.value);
   };
 
+  // check if form element contains more than 1 children
+  const handleFormChildren = (e: HTMLFormElement) => {
+    if(e.length < 2) {
+      setFormChildren(true)
+    }
+  }
+
   // retrieve localstorage values and set them to values obj
   useEffect(() => {
     const locValues = {
@@ -113,11 +122,15 @@ function App() {
     setFileInput(localStorage.getItem("file") || undefined);
   }, []);
 
+  useEffect(() => {
+    handleFormChildren(formRef.current)
+  }, [formChildren])
+
   return (
     <Router>
       <div className="App">
         <div className="container">
-          <form action="#" className="form-container">
+          <form action="#" ref={formRef} className="form-container">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route
@@ -143,9 +156,12 @@ function App() {
                   <Education values={values} handleChange={handleChange} />
                 }
               />
+              <Route
+                path="/finished"
+              />
             </Routes>
-            <div className="Resume">
-              <Resume 
+            <div className={formChildren ? "Resume alone" : "Resume"}>
+              <Resume
                 name={values.name}
                 lastName={values.lastname}
                 email={values.email}

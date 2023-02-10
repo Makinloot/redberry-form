@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // components
@@ -81,9 +81,9 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
               <Link to="/experience">
                 <Button text="უკან" btntype="btn-purple" />
               </Link>
-              <Link to="/" id="education-next-page">
+              <a href="/finished" id="education-next-page">
                 <Button text="დასრულება" btntype="btn-purple" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
