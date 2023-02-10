@@ -15,9 +15,9 @@ const Home = () => {
             </div>
           </div>
           <div style={{position: 'relative'}}>
-            {/* <a href="/about"> */}
+            <a href="/about">
               <Button btntype='btn-black' text='რეზიუმეს დამატება' />
-            {/* </a> */}
+            </a>
             <img className='mark' src={mark} />
           </div>
         </div>
