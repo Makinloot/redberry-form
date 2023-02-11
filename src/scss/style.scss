@@ -7,7 +7,7 @@
   min-height: 100vh;
 
   &:has(.Resume.alone) {
-    grid-template-columns: 822px;
+    grid-template-columns: 822px !important;
     justify-content: center;
   }
 }
@@ -16,15 +16,20 @@
   padding-bottom: 65px;
   background-color: #F9F9F9;
 
+  &.hide {
+    display: none;
+    pointer-events: none;
+  }
+
   // if about inputs are invalid don't show next page btn
   &:has(#name:invalid, #lastname:invalid, #email:invalid, #mobile-number:invalid) {
-    #about-next-page {
+    .about-next-page {
       display: none;
     }
   }
   // if experience inputs are invalid don't show next page btn
   &:has(#position-input:invalid, #employer-input:invalid, #startDate:invalid, #endDate:invalid, #position-textarea:invalid, #position-input-addit:invalid, #employer-input-addit:invalid, #startDateAddit:invalid, #endDateAddit:invalid, #position-textarea-addit:invalid) {
-    #experience-next-page {
+    .experience-next-page {
       display: none;
     }
   }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // components
@@ -16,12 +17,14 @@ interface AboutProps {
   fileInput: string | undefined,
   handleChange: (e: handleChange) => void,
   handleUploadImg: (e: handleUploadImg) => void,
+  showFormSection: string;
+  setShowFormSection: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUploadImg}) => {
+const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUploadImg, showFormSection, setShowFormSection}) => {
 
   return (
-    <div className="Form">
+    <div className={showFormSection === 'true' ? "Form about" : "Form hide"}>
       <div className="container">
         <div className="Form-wrapper">
           <div className="Form-primary container-small">
@@ -54,9 +57,7 @@ const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUpl
                   />
                 ))
                 .slice(2)}
-              <Link to="/experience" className="next-page" id="about-next-page">
-                <Button text="შემდეგი" btntype="btn-purple" />
-              </Link>
+              <Button text="შემდეგი" btntype="btn-purple about-next-page" setShow={setShowFormSection} show={["false", "true", "false", "true", "false"]} />
             </div>
           </div>
         </div>

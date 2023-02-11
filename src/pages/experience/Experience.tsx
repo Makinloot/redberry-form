@@ -15,9 +15,11 @@ import { handleChange } from "../../App";
 interface ExperienceProps {
   values: ValueTypes | any;
   handleChange: (e: handleChange) => void;
+  showFormSection: string;
+  setShowFormSection: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
+const Experience: React.FC<ExperienceProps> = ({ values, handleChange, showFormSection, setShowFormSection }) => {
   const [show, setShow] = useState<boolean>(false);
 
   const handleRemoveAdditExp = () => {
@@ -30,7 +32,7 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
   }
 
   return (
-    <div className="Form">
+    <div className={showFormSection === 'true' ? "Form" : "Form hide"}>
       <div className="container">
         <div className="Form-wrapper">
           <div className="Form-primary container-small">
@@ -66,12 +68,8 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange }) => {
               </div>
             )}
             <div className="next-prev flex-row">
-              <Link to="/about">
-                <Button text="უკან" btntype="btn-purple" />
-              </Link>
-              <Link to="/education" id="experience-next-page">
-                <Button text="შემდეგი" btntype="btn-purple" />
-              </Link>
+              <Button text="უკან" btntype="btn-purple next-prev-form" show={["true", "false", "false", "true", "false"]} setShow={setShowFormSection} />
+              <Button text="შემდეგი" btntype="btn-purple experience-next-page" show={["false", "false", "true", "true", "false"]} setShow={setShowFormSection} />
             </div>
           </div>
         </div>

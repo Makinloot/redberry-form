@@ -15,10 +15,12 @@ import { handleChange } from "../../App";
 interface EducationProps {
   values: ValueTypes | any;
   handleChange: (e: handleChange) => void;
+  showFormSection: string;
+  setShowFormSection: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 
-const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
+const Education: React.FC<EducationProps> = ({ values, handleChange, showFormSection, setShowFormSection }) => {
   const [show, setShow] = useState<string | null>(localStorage.getItem('additEduFields'));
   
   const handleAdditionalFields = () => {
@@ -40,7 +42,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
   }
   
   return (
-    <div className="Form">
+    <div className={showFormSection === 'true' ? "Form" : "Form hidden"}>
       <div className="container">
         <div className="Form-wrapper">
           <div className="Form-primary container-small">
@@ -78,9 +80,7 @@ const Education: React.FC<EducationProps> = ({ values, handleChange }) => {
               </div>
             )}
             <div className="next-prev flex-row">
-              <Link to="/experience">
-                <Button text="უკან" btntype="btn-purple" />
-              </Link>
+              <Button text="უკან" btntype="btn-purple" show={["false", "true", "false", "true", "false"]} setShow={setShowFormSection} />
               <Button submit="submit" text="დასრულება" btntype="btn-purple" />
             </div>
           </div>
