@@ -111,6 +111,7 @@ const Input: React.FC<InputProps> = ({
             {...othr}
             autoComplete="off"
             onClick={() => setOpenDegrees(!openDegrees)}
+            readOnly
           />
           <img className="arrow-down" src={arrowDown} />
         </div>

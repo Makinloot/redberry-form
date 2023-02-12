@@ -104,49 +104,81 @@ function App() {
   // submit form
   const handleSubmitForm = (e: HTMLFormElement | any) => {
     e.preventDefault();
+    
     const experiencesArr = [
       {
-        position: "back-end developer",
-        employer: "Redberry",
-        start_date: "2019/09/09",
-        due_date: "2020/09/23",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ornare nunc dui, a pellentesque magna blandit dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis diam nisi, at venenatis dolor aliquet vel. Pellentesque aliquet leo nec tortor pharetra, ac consectetur orci bibendum."
+        position: values.position,
+        employer: values.employer,
+        start_date: values.startDate,
+        due_date: values.endDate,
+        description: values.positionText,
+      },
+      {
+        position: values.positionAddit,
+        employer: values.employerAddit,
+        start_date: values.startDateAddit,
+        due_date: values.endDateAddit,
+        description: values.positionTextAddit
       }
     ]
 
     const educationsArr = [
       {       
-        institute: "თსუ",
-        degree_id: 7,
-        due_date: "2017/06/25",
-        description: "სამართლის ფაკულტეტის მიზანი იყო მიგვეღო ფართო თეორიული ცოდნა სამართლის არსის, სისტემის, ძირითადი პრინციპების, სამართლებრივი სისტემების, ქართული სამართლის ისტორიული წყაროების, კერძო, სისხლის და საჯარო სამართლის სფეროების ძირითადი თეორიების, პრინციპებისა და რეგულირების თავისებურებების შესახებ.",
+        institute: values.education,
+        degree_id: 1,
+        degree: values.degree,
+        due_date: values.educationEnd,
+        description: values.educationText
+      },
+      {
+        institute: values.educationAddit,
+        degree_id: 2,
+        degree: values.degreeAddit,
+        due_date: values.educationEndAddit,
+        description: values.educationTextAddit
       }
     ]
 
-    const formData = new FormData()
-    formData.append('name', 'ტესტ');
-    formData.append('surname', 'ტესტ');
-    formData.append('about_me', 'ტესტ');
-    formData.append('phone_number', '+995592592332');
-    formData.append('email', 'tornike@redberry.ge');
+    const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('surname', values.lastname);
+    formData.append('about_me', values.text);
+    formData.append('phone_number', `+995${values.number}`);
+    formData.append('email', values.email);
     formData.append('image', fileInput);
 
     experiencesArr.forEach((item, i) => {
-      formData.append(`experiences[${i}][position]`, experiencesArr[i].position.toString());
-      formData.append(`experiences[${i}][employer]`, experiencesArr[i].employer.toString());
-      formData.append(`experiences[${i}][start_date]`, experiencesArr[i].start_date.toString());
-      formData.append(`experiences[${i}][due_date]`, experiencesArr[i].due_date.toString());
-      formData.append(`experiences[${i}][description]`, experiencesArr[i].description.toString());
+      formData.append(`experiences[${[0]}][position]}`, experiencesArr[0].position.toString());
+      formData.append(`experiences[${[0]}][employer]`, experiencesArr[0].employer.toString());
+      formData.append(`experiences[${[0]}][start_date]`, experiencesArr[0].start_date.toString());
+      formData.append(`experiences[${[0]}][due_date]`, experiencesArr[0].due_date.toString());
+      formData.append(`experiences[${[0]}][description]`, experiencesArr[0].description.toString());
+      if(experiencesArr[1].position) {
+        formData.append(`experiences[${[1]}][position]}`, experiencesArr[1].position.toString());
+        formData.append(`experiences[${[1]}][employer]`, experiencesArr[1].employer.toString());
+        formData.append(`experiences[${[1]}][start_date]`, experiencesArr[1].start_date.toString());
+        formData.append(`experiences[${[1]}][due_date]`, experiencesArr[1].due_date.toString());
+        formData.append(`experiences[${[1]}][description]`, experiencesArr[1].description.toString());
+      }
     })
 
     educationsArr.forEach((item, i) => {
-      formData.append(`educations[${i}][institute]`, educationsArr[i].institute.toString());
-      formData.append(`educations[${i}][degree_id]`, educationsArr[i].degree_id.toString());
-      formData.append(`educations[${i}][due_date]`, educationsArr[i].due_date.toString());
-      formData.append(`educations[${i}][description]`, educationsArr[i].description.toString());
+      formData.append(`educations[${0}][institute]`, educationsArr[0].institute.toString());
+      formData.append(`educations[${0}][degree]`, educationsArr[0].degree.toString());
+      formData.append(`educations[${0}][degree_id]`, educationsArr[0].degree_id.toString());
+      formData.append(`educations[${0}][due_date]`, educationsArr[0].due_date.toString());
+      formData.append(`educations[${0}][description]`, educationsArr[0].description.toString());
+      if(educationsArr[1].institute) {
+        formData.append(`educations[${1}][institute]`, educationsArr[1].institute.toString());
+        formData.append(`educations[${1}][degree]`, educationsArr[1].degree.toString());
+        formData.append(`educations[${1}][degree_id]`, educationsArr[1].degree_id.toString());
+        formData.append(`educations[${1}][due_date]`, educationsArr[1].due_date.toString());
+        formData.append(`educations[${1}][description]`, educationsArr[1].description.toString());
+      }
     })
     
     handlePostData(formData);
+    console.log(fileInput)
   };
 
   const handlePostData = async (formData: FormData) => {
@@ -159,10 +191,9 @@ function App() {
       localStorage.setItem('educationForm', "false")
       localStorage.setItem('resumeForm', "false") 
       localStorage.setItem('resultForm', "true")
+      localStorage.clear()
     })
   };
-
-  console.log(apiData)
 
   // retrieve localstorage values and set them to values obj
   useEffect(() => {
@@ -194,7 +225,7 @@ function App() {
       positionTextAddit: localStorage.getItem("positionTextAddit") || "",
     };
     setValues(locValues);
-    setFileInput(localStorage.getItem("file") || undefined);
+    setFileInput(localStorage.getItem("file"));
   }, []);
 
   useEffect(() => {
@@ -237,7 +268,6 @@ function App() {
                       showFormSection={showFormSection[2]}
                       setShowFormSection={setShowFormSection}
                     />
-                    {/* <div className={formChildren ? "Resume alone" : "Resume"}> */}
                     <div className={showFormSection[3] === "true" ? "Resume" : "Resume hidden"}>
                       <Resume
                         name={values.name}

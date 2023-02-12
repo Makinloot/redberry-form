@@ -80,8 +80,12 @@ const Education: React.FC<EducationProps> = ({ values, handleChange, showFormSec
               </div>
             )}
             <div className="next-prev flex-row">
-              <Button text="უკან" btntype="btn-purple" show={["false", "true", "false", "true", "false"]} setShow={setShowFormSection} />
-              <Button submit="submit" text="დასრულება" btntype="btn-purple" />
+              <Button text="უკან" btntype="btn-purple set" show={["false", "true", "false", "true", "false"]} setShow={setShowFormSection} />
+              <div onClick={() => {
+                if(values.fileInput === undefined) alert('გთხოვთ ხელახლა ატვირთოთ სურათი')
+              }}>
+                <Button submit="submit" text="დასრულება" btntype="btn-purple clear" />
+              </div>
             </div>
           </div>
         </div>

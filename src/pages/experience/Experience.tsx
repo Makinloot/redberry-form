@@ -68,8 +68,8 @@ const Experience: React.FC<ExperienceProps> = ({ values, handleChange, showFormS
               </div>
             )}
             <div className="next-prev flex-row">
-              <Button text="უკან" btntype="btn-purple next-prev-form" show={["true", "false", "false", "true", "false"]} setShow={setShowFormSection} />
-              <Button text="შემდეგი" btntype="btn-purple experience-next-page" show={["false", "false", "true", "true", "false"]} setShow={setShowFormSection} />
+              <Button text="უკან" btntype="btn-purple next-prev-form set" show={["true", "false", "false", "true", "false"]} setShow={setShowFormSection} />
+              <Button text="შემდეგი" btntype="btn-purple experience-next-page set" show={["false", "false", "true", "true", "false"]} setShow={setShowFormSection} />
             </div>
           </div>
         </div>

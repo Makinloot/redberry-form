@@ -57,7 +57,7 @@ const About: React.FC<AboutProps> = ({values, fileInput, handleChange, handleUpl
                   />
                 ))
                 .slice(2)}
-              <Button text="შემდეგი" btntype="btn-purple about-next-page" setShow={setShowFormSection} show={["false", "true", "false", "true", "false"]} />
+              <Button text="შემდეგი" btntype="btn-purple about-next-page set" setShow={setShowFormSection} show={["false", "true", "false", "true", "false"]} />
             </div>
           </div>
         </div>

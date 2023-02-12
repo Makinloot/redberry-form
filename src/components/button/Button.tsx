@@ -17,6 +17,7 @@ const Button: React.FC<{
       </button>
     );
   }
+  
   return (
     <button 
       className={btntype} 
@@ -29,6 +30,9 @@ const Button: React.FC<{
           localStorage.setItem('educationForm', show[2])
           localStorage.setItem('resumeForm', show[3])
           localStorage.setItem('resultForm', show[4])
+        } else {
+          localStorage.clear();
+          console.log('red')
         }
       }}  
     >
