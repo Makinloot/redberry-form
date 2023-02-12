@@ -34,6 +34,7 @@ interface ResumeProps {
   startDateAddit: string;
   endDateAddit: string;
   positionTextAddit: string;
+  prefix?: string;
 }
 
 const Resume: React.FC<ResumeProps> = ({
@@ -61,6 +62,7 @@ const Resume: React.FC<ResumeProps> = ({
   startDateAddit,
   endDateAddit,
   positionTextAddit,
+  prefix
 }) => {
 
   const [popup, setPopup] = useState<boolean>(true);
@@ -83,6 +85,7 @@ const Resume: React.FC<ResumeProps> = ({
         mobile={mobile}
         aboutText={aboutText}
         userImg={userImg}
+        prefix={prefix}
       />
       <Exp 
         position={position}

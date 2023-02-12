@@ -42,7 +42,7 @@ function App() {
   // const [formChildren, setFormChildren] = useState<boolean>(false);
   const formRef = useRef<any>();
   const [fileInput, setFileInput] = useState<any>();
-  const [file, setFile] = useState(undefined);
+  const [file, setFile] = useState<any>(undefined);
   const [values, setValues] = useState<ValueTypes | any>({
     name: "",
     lastname: "",
@@ -95,13 +95,6 @@ function App() {
     setValues({ ...values, [e.target.name]: e.target.value });
     localStorage.setItem(e.target.name, e.target.value);
   };
-
-  // // check if form element contains more than 1 children
-  // const handleFormChildren = (e: HTMLFormElement) => {
-  //   if (e.length < 2) {
-  //     setFormChildren(true);
-  //   }
-  // };
 
   // submit form
   const handleSubmitForm = (e: HTMLFormElement | any) => {
@@ -275,6 +268,7 @@ function App() {
                         name={values.name}
                         lastName={values.lastname}
                         email={values.email}
+                        prefix="+995"
                         mobile={values.number}
                         aboutText={values.text}
                         position={values.position}

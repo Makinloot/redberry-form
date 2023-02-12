@@ -13,7 +13,7 @@ const Result = ({ data }: { data: any }) => {
       phone_number,
       surname,
     } = data;
-    console.log(image)
+    console.log(phone_number)
     const { degree, description, due_date, institute } = educations[0];
     const { employer, position, start_date } = experiences[0];
     const expEnd = experiences[0].due_date;

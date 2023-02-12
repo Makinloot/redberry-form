@@ -8,6 +8,7 @@ interface HeroProps {
   mobile: string;
   aboutText: string;
   userImg: any;
+  prefix?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({
@@ -16,7 +17,8 @@ const Hero: React.FC<HeroProps> = ({
   email,
   mobile,
   aboutText,
-  userImg
+  userImg,
+  prefix
 }) => {
   return (
     <div className="Resume-hero">
@@ -36,22 +38,52 @@ const Hero: React.FC<HeroProps> = ({
           <span className={mobile ? "flex-row" : "hidden"}>
             <img src={mobileIcon} />
             <span>
-              +995
-              <span style={{ marginLeft: 6 }}>
+              {prefix ?
+              <>
+                +995
+                <span style={{ marginLeft: 6 }}>
+                  {mobile.split("")[0]}
+                  {mobile.split("")[1]}
+                  {mobile.split("")[2]}
+                </span>
+                <span style={{ marginLeft: 6 }}>
+                  {mobile.split("")[3]}
+                  {mobile.split("")[4]}
+                  {mobile.split("")[5]}
+                </span>
+                <span style={{ marginLeft: 6 }}>
+                  {mobile.split("")[6]}
+                  {mobile.split("")[7]}
+                  {mobile.split("")[8]}
+                </span>
+              </>
+              :
+              <>
+              <span style={{marginLeft: 6}}>
                 {mobile.split("")[0]}
                 {mobile.split("")[1]}
                 {mobile.split("")[2]}
-              </span>
-              <span style={{ marginLeft: 6 }}>
                 {mobile.split("")[3]}
+              </span>
+              <span style={{marginLeft: 6}}>
                 {mobile.split("")[4]}
                 {mobile.split("")[5]}
-              </span>
-              <span style={{ marginLeft: 6 }}>
                 {mobile.split("")[6]}
+              </span>
+              <span style={{marginLeft: 6}}>
                 {mobile.split("")[7]}
                 {mobile.split("")[8]}
               </span>
+              <span style={{marginLeft: 6}}>
+                {mobile.split("")[9]}
+                {mobile.split("")[10]}
+              </span>
+              <span style={{marginLeft: 6}}>
+                {mobile.split("")[11]}
+                {mobile.split("")[12]}
+              </span>
+              </>
+              }
             </span>
           </span>
         </div>
