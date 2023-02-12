@@ -39,9 +39,10 @@ export type handleUploadImg = {
 
 function App() {
   const [apiData, setApiData] = useState(null);
-  const [formChildren, setFormChildren] = useState<boolean>(false);
+  // const [formChildren, setFormChildren] = useState<boolean>(false);
   const formRef = useRef<any>();
   const [fileInput, setFileInput] = useState<any>();
+  const [file, setFile] = useState(undefined);
   const [values, setValues] = useState<ValueTypes | any>({
     name: "",
     lastname: "",
@@ -81,7 +82,8 @@ function App() {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onload = (target: { target: any }) => {
-      setFileInput(file);
+      setFileInput(target.target.result);
+      setFile(file)
       localStorage.setItem("file", target.target.result);
       localStorage.setItem("fileImg", file);
     };
@@ -94,12 +96,12 @@ function App() {
     localStorage.setItem(e.target.name, e.target.value);
   };
 
-  // check if form element contains more than 1 children
-  const handleFormChildren = (e: HTMLFormElement) => {
-    if (e.length < 2) {
-      setFormChildren(true);
-    }
-  };
+  // // check if form element contains more than 1 children
+  // const handleFormChildren = (e: HTMLFormElement) => {
+  //   if (e.length < 2) {
+  //     setFormChildren(true);
+  //   }
+  // };
 
   // submit form
   const handleSubmitForm = (e: HTMLFormElement | any) => {
@@ -145,7 +147,7 @@ function App() {
     formData.append('about_me', values.text);
     formData.append('phone_number', `+995${values.number}`);
     formData.append('email', values.email);
-    formData.append('image', fileInput);
+    formData.append('image', file);
 
     experiencesArr.forEach((item, i) => {
       formData.append(`experiences[${[0]}][position]}`, experiencesArr[0].position.toString());
@@ -228,9 +230,9 @@ function App() {
     setFileInput(localStorage.getItem("file"));
   }, []);
 
-  useEffect(() => {
-    handleFormChildren(formRef.current);
-  }, [formChildren]);
+  // useEffect(() => {
+  //   handleFormChildren(formRef.current);
+  // }, [formChildren]);
 
   return (
     <Router>
